@@ -9,12 +9,23 @@
   <a href="{{path('pro_stage_entreprises')}}">Rechercher par entreprise</a>
   <a href="{{path('pro_stage_formations')}}">Rechercher par formation</a>
 
-  <ul>
-    <li><a href="{{path('pro_stage_stages', {id:1})}}">stage1</a></li>
-    <li><a href="{{path('pro_stage_stages', {id:2})}}">stage2</a></li>
-    <li><a href="{{path('pro_stage_stages', {id:3})}}">stage3</a></li>
-    <li><a href="{{path('pro_stage_stages', {id:4})}}">stage4</a></li>
-    <li><a href="{{path('pro_stage_stages', {id:5})}}">stage5</a></li>
-    <li><a href="{{path('pro_stage_stages', {id:6})}}">stage6</a></li>
+  <div >
+  <p>Les différents stages accessibles pour le moment :</p>
+  {% for stage in stageList %}
+  <div class="list-group">
+    <a href="{{path('pro_stage_stages', {idstage:stage.id})}}" class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{stage.titre}}</h5>
+        <small>Formations : {% for formation in stage.formations %}{{formation.intitule}} {% endfor %}</small>
+      </div>
+      <div class="d-flex w-100 justify-content-between">
+        <small><p class="disabled"> {{stage.entreprise.nom}} - {{stage.entreprise.activite}}</p></small>
+        <small>Contact : {{stage.email}}</small>
+      </div>
+      <p class="mb-1">{{stage.description}}</p>
+    </a>
+    {% endfor %}
   </ul>
+</div>
+
 {% endblock %}
