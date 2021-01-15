@@ -1,24 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Bienvenue sur ProStage ! </h>
-  <h1> Cette page affichera des la liste des formations de l'IUT  </h1>
+<h2>Liste des stages par Formation : </h2>
 
   <ul>
-    <li>form1</li>
-      <ul>
-      <li>stage 1</li>
-      <li>stage 2</li>
-      </ul>
-    <li>form2</li>
-      <ul>
-      <li>stage 1</li>
-      <li>stage 2</li>
-      </ul>
-    <li>form3</li>
-      <ul>
-      <li>stage 1</li>
-      <li>stage 2</li>
-      </ul>
+    {% for formation in formationList %}
+    <li>{{formation.intitule}}</li>
+    <ul>
+      {% for stage in formation.stages %}
+      <li><a href="{{path('pro_stage_stages', {idstage:stage.id})}}">{{stage.titre}}</a></li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
   </ul>
 {% endblock %}

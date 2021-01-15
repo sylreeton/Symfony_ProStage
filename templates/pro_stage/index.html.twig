@@ -1,14 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Bienvenue sur ProStage ! </h>
-  <p>
-    Cette page présentera bientot toutes les ressources pédagogiques susceptible de vous être utiles durant votre formation à l'IUT.
-  </p>
-
-  <a href="{{path('pro_stage_entreprises')}}">Rechercher par entreprise</a>
-  <a href="{{path('pro_stage_formations')}}">Rechercher par formation</a>
-
   <div >
   <p>Les différents stages accessibles pour le moment :</p>
   {% for stage in stageList %}

@@ -17,11 +17,12 @@ class ProStageController extends AbstractController
     /**
      * @Route("/", name="pro_stage")
      */
-     public function index(StageRepository $repositoryStage): Response
+     public function index(): Response
      {
-         $stages = $repositoryStage->findAll();
+        $stagesRepository = $this->getDoctrine()->getRepository(Stage::class);
+        $stages = $stagesRepository->findAll();
 
-         return $this->render('pro_stage/index.html.twig', ['stageList' => $stages]);
+        return $this->render('pro_stage/index.html.twig', ['stageList' => $stages]);
      }
 
     /**
@@ -29,8 +30,10 @@ class ProStageController extends AbstractController
      */
     public function afficherEntreprises(): response
     {
-        return $this->render('pro_stage/affichageEntreprises.html.twig');
+        $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+        $entreprises = $repositoryEntreprise->findAll();
 
+        return $this->render('pro_stage/affichageEntreprises.html.twig', ['entrepriseList' => $entreprises]);
     }
 
     /**
@@ -38,15 +41,20 @@ class ProStageController extends AbstractController
      */
     public function afficherFormations(): response
     {
-        return $this->render('pro_stage/affichageFormations.html.twig');
+        $repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
+        $formations = $repositoryFormation->findAll();
 
+        return $this->render('pro_stage/affichageFormations.html.twig', ['formationList' => $formations]);
     }
 
         /**
          * @Route("/stages/{idstage}", name="pro_stage_stages")
          */
-        public function afficherStages(Stage $stage): response
+        public function afficherStages($idstage): response
         {
+            $stagesRepository = $this->getDoctrine()->getRepository(Stage::class);
+            $stage = $stagesRepository->find($idstage);
+
             return $this->render('pro_stage/affichageStages.html.twig',
              ['stage'=> $stage]);
 
