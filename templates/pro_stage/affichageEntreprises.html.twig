@@ -1,1 +1,24 @@
-<h1> Cette page affichera la liste des entreprises proposant un stage </h1>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Bienvenue sur ProStage ! </h>
+  <h1> Cette page affichera la liste des entreprises proposant un stage </h1>
+
+  <ul>
+    <li>ent1</li>
+      <ul>
+      <li>stage 1</li>
+      <li>stage 2</li>
+      </ul>
+    <li>ent2</li>
+      <ul>
+      <li>stage 1</li>
+      <li>stage 2</li>
+      </ul>
+    <li>ent3</li>
+      <ul>
+      <li>stage 1</li>
+      <li>stage 2</li>
+      </ul>
+  </ul>
+{% endblock %}

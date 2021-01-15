@@ -1,5 +1,10 @@
-<h1>Stage{{idStages}}</h1>
+{% extends 'base.html.twig' %}
 
-<p>
-  Cette page affichera le stage {{idStages}}
-</p>
+{% block body %}
+<h1>Bienvenue sur ProStage ! </h>
+  <h1>Stage{{idStages}}</h1>
+
+  <p>
+    Cette page affichera le stage {{idStages}}
+  </p>
+{% endblock %}
