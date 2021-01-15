@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-<h1>Bienvenue sur ProStage ! </h>
-  <h1>Stage{{idStages}}</h1>
+{% block title %}Stage : {{stage.titre}} {% endblock %}
 
-  <p>
-    Cette page affichera le stage {{idStages}}
-  </p>
+{% block body %}
+<h1>{{stage.titre}}</h1>
+<ul class="list-group">
+  <li class="list-group-item">Entreprise : {{stage.entreprise.nom}}</li>
+  <li class="list-group-item">Formation : {% for formation in stage.formations %}{{formation.intitule}}{% if loop.last == false %}, {% endif %} {% endfor %}</li>
+  <li class="list-group-item">description: {{stage.description}}</li>
+</ul>
 {% endblock %}

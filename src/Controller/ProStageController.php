@@ -5,6 +5,12 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Stage;
+use App\Repository\StageRepository;
+use App\Entity\Entreprise;
+use App\Repository\EntrepriseRepository;
+use App\Entity\Formation;
+use App\Repository\FormationRepository;
 
 class ProStageController extends AbstractController
 {
@@ -38,10 +44,10 @@ class ProStageController extends AbstractController
         /**
          * @Route("/stages/{id}", name="pro_stage_stages")
          */
-        public function afficherStages($id): response
+        public function afficherStages(Stage $stage): response
         {
             return $this->render('pro_stage/affichageStages.html.twig',
-             ['idStages'=> $id]);
+             ['stage'=> $stage]);
 
         }
 
